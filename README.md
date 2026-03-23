@@ -1,28 +1,22 @@
-# 🚢 LH Nautical — Desafio de Dados
+# LH Nautical — Desafio de Dados
 
 > **Transformando dados desorganizados em inteligência estratégica para o varejo náutico.**
 
 ---
 
-## 📋 Contexto
+##  Contexto
 
 A **LH Nautical** é uma empresa líder no varejo de peças e acessórios para embarcações, operando em modelo híbrido com loja física em Florianópolis e e-commerce de alcance nacional.
-
-O projeto nasceu de um cenário de "caos dos dados":
-- 📂 Controle de estoque em planilhas manuais e sujas
-- 🔌 Banco de dados do e-commerce desconectado do sistema financeiro
-- 📊 Diretoria tomando decisões no "feeling" sem dados consolidados
-
 **Missão:** atuar como profissional de dados e transformar esse cenário — desde a limpeza das bases até a geração de insights preditivos e sistemas de recomendação.
 
 ---
 
-## 🗂️ Estrutura do Repositório
+##  Estrutura do Repositório
 
 ```
 lh-nautical-data-challenge/
 │
-├── 📁 data/
+├──  data/
 │   ├── vendas_limpo.csv
 │   ├── produtos_limpo.csv
 │   ├── clientes_limpo.csv
@@ -31,7 +25,7 @@ lh-nautical-data-challenge/
 │   ├── base_completa.csv
 │   └── recomendacoes.csv
 │
-├── 📁 notebooks/
+├──  notebooks/
 │   ├── 01_EDA.ipynb
 │   ├── 02_Tratamento.ipynb
 │   ├── 03_Analise_Vendas.ipynb
@@ -39,10 +33,10 @@ lh-nautical-data-challenge/
 │   ├── 05_Previsao_Demanda.ipynb
 │   └── 06_Recomendacao.ipynb
 │
-├── 📁 apresentacao/
+├──  apresentacao/
 │   └── LH_Nautical_Apresentacao.pptx
 │
-├── 📁 banco/
+├──  banco/
 │   └── lh_nautical.db
 │
 └── README.md
@@ -50,7 +44,7 @@ lh-nautical-data-challenge/
 
 ---
 
-## 📓 Notebooks — Descrição
+##  Notebooks — Descrição
 
 ### `01_EDA.ipynb` — Exploração Inicial
 Análise exploratória das 4 bases brutas recebidas.
@@ -133,9 +127,9 @@ Identificação dos clientes mais valiosos e análise de comportamento.
 - Clientes recorrentes (compraram em 2023 e 2024)
 - Distribuição de clientes por estado
 - Segmentação RFM simplificada:
-  - 🥇 Alto Valor: acima de R$ 10.000
-  - 🥈 Médio Valor: entre R$ 5.000 e R$ 10.000
-  - 🥉 Baixo Valor: abaixo de R$ 5.000
+  -  Alto Valor: acima de R$ 10.000
+  -  Médio Valor: entre R$ 5.000 e R$ 10.000
+  -  Baixo Valor: abaixo de R$ 5.000
 
 **Principais queries:**
 ```sql
@@ -165,10 +159,10 @@ Previsão de faturamento diário para os próximos 90 dias.
 - Visualização da tendência, sazonalidade semanal e anual
 
 **Principais insights:**
-- 📈 Tendência de crescimento estável ao longo do período
-- 🚀 Novembro é o pico anual (Black Friday)
-- 📉 Abril/Maio representam o vale do ano
-- 📅 Sexta-feira e Sábado são os melhores dias da semana
+- Tendência de crescimento estável ao longo do período
+- Novembro é o pico anual (Black Friday)
+- Abril/Maio representam o vale do ano
+- Sexta-feira e Sábado são os melhores dias da semana
 
 **Configuração do modelo:**
 ```python
@@ -204,7 +198,7 @@ Cliente B comprou Produto 1 e Produto 3
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 | Ferramenta | Uso |
 |---|---|
@@ -218,7 +212,7 @@ Cliente B comprou Produto 1 e Produto 3
 
 ---
 
-## ▶️ Como Reproduzir
+## Como Reproduzir
 
 ### 1. Clone o repositório
 ```bash
@@ -241,11 +235,11 @@ pip install pandas prophet scikit-learn matplotlib pandasql
 06_Recomendacao.ipynb → sistema de recomendação
 ```
 
-> ⚠️ Execute sempre na ordem numérica — cada notebook depende das saídas do anterior.
+> Execute sempre na ordem numérica — cada notebook depende das saídas do anterior.
 
 ---
 
-## 💡 Principais Insights
+## Principais Insights
 
 ### Vendas
 - Faturamento em crescimento estável de 2023 para 2024
@@ -260,16 +254,6 @@ pip install pandas prophet scikit-learn matplotlib pandasql
 ### Produtos
 - Motores e Embarcações dominam o ranking de faturamento
 - Top 3 produtos concentram grande parte da receita
-
----
-
-## 👥 Stakeholders
-
-| Perfil | Papel |
-|---|---|
-| **Gabriel Santos** (Tech Lead) | Valoriza organização, documentação e clareza |
-| **Marina Costa** (Gerente de Negócios) | Focada em margens e performance de vendas |
-| **Sr. Almir** (Fundador) | Precisa ser convencido por dados sólidos |
 
 ---
 
@@ -288,4 +272,4 @@ pip install pandas prophet scikit-learn matplotlib pandasql
 
 ---
 
-*Desafio de Dados — LH Nautical | 2023–2024*
+*Desafio de Dados — Incidium Academy*
