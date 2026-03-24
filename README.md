@@ -26,15 +26,17 @@ lh-nautical-data-challenge/
 │   └── recomendacoes.csv
 │
 ├──  notebooks/
-│   ├── 01_EDA.ipynb
-│   ├── 02_Tratamento.ipynb
-│   ├── 03_Analise_Vendas.ipynb
-│   ├── 04_Analise_Clientes.ipynb
-│   ├── 05_Previsao_Demanda.ipynb
-│   └── 06_Recomendacao.ipynb
+│   ├── vendas_2023-2024.ipynb
+|   ├── custos_importacao.ipynb
+|   ├── vendas_2023-2024.ipynb
+│   ├── clientes_crm.ipynb
+│   ├── Analise_de_Vendas.ipynb
+│   ├── Analise_clientes.ipynb
+│   ├── Prev_demand.ipynb
+│   └── sist_recomen.ipynb
 │
 ├──  apresentacao/
-│   └── LH_Nautical_Apresentacao.pptx
+│   └── LH_Nautical_Apresentacao.ppsx
 │
 ├──  banco/
 │   └── lh_nautical.db
@@ -46,155 +48,114 @@ lh-nautical-data-challenge/
 
 ##  Notebooks — Descrição
 
-### `01_EDA.ipynb` — Exploração Inicial
-Análise exploratória das 4 bases brutas recebidas.
-
-**O que foi feito:**
-- Verificação de shape, dtypes e primeiras linhas de cada base
-- Contagem de valores nulos e duplicatas por coluna
-- Estatísticas descritivas (min, max, média, desvio padrão)
-- Análise do período coberto pelos dados de vendas
-- Identificação dos problemas de qualidade em cada base
-
-**Bases analisadas:**
-| Base | Linhas | Colunas | Principais problemas |
-|---|---|---|---|
-| vendas_2023_2024 | — | id, id_client, id_product, qtd, total, sale_date | Verificar duplicatas e valores negativos |
-| produtos_raw | — | code, name, price, actual_category | Duplicatas e textos despadronizados |
-| custos_importacoes | — | product_id, product_name, category, historic_data | JSON aninhado na coluna historic_data |
-| clientes_crm | — | full_name, email, code, location | E-mails com `#` e location despadronizado |
+## Notebooks
 
 ---
 
-### `02_Tratamento.ipynb` — Limpeza e Padronização
-Tratamento de todos os problemas identificados na EDA.
+### `vendas_2023-2024.ipynb`
+**EDA e tratamento da base de vendas**
 
-**O que foi feito:**
-- Remoção de duplicatas (linhas inteiras iguais)
-- Remoção de registros com nulos em colunas críticas
-- Correção de e-mails com `#` → `@`
-- Separação da coluna `location` em `cidade` e `estado` (regex + mapeamento de UFs)
-- Padronização de texto com `.str.strip().str.title()`
-- Conversão de tipos: datas com `pd.to_datetime()`, valores com `pd.to_numeric()`
-- Remoção de vendas com `qtd <= 0` e `total <= 0`
-- Expansão do JSON `historic_data` em linhas separadas (custos)
-- Extração do custo mais recente por produto
+Carrega o arquivo `vendas_2023_2024.csv` e faz a exploração inicial: shape, tipos de coluna, nulos e duplicatas. Gera tabelas de resumo separadas para cada coluna — quantidade vendida (`qtd`), valor financeiro (`total`), clientes únicos, produtos únicos e período coberto pelas datas.
 
-**Bases geradas:**
-- `vendas_limpo.csv`
-- `produtos_limpo.csv`
-- `clientes_limpo.csv`
-- `custos_resumido.csv`
-- `custos_expandido.csv`
+Nenhuma limpeza pesada foi necessária nessa base. A saída é o dataframe tratado, pronto para ser carregado no banco SQLite na etapa seguinte.
+
+**Colunas trabalhadas:** `id`, `id_client`, `id_product`, `qtd`, `total`, `sale_date`
 
 ---
 
-### `03_Analise_Vendas.ipynb` — Performance Comercial
-Análise de faturamento, produtos e sazonalidade via SQL.
+### `produtos.ipynb`
+**EDA e tratamento do catálogo de produtos**
 
-**O que foi feito:**
-- Criação do banco SQLite `lh_nautical.db` com as 4 tabelas limpas
-- Join das 4 tabelas em uma `base_completa`
-- Faturamento total por ano (2023 vs 2024)
-- Faturamento mensal com variação percentual
-- Top 10 produtos por faturamento e por quantidade
-- Faturamento por categoria de produto
-- Faturamento por estado (ranking nacional)
-- Ticket médio por período
+Carrega `produtos_raw.csv` e inspeciona as quatro colunas disponíveis. O principal trabalho aqui foi na coluna `price`, que chegou com o prefixo `R$` em formato texto — foi convertida para numérico após limpeza da string. A coluna `actual_category` passou por padronização de texto para remover acentos e inconsistências de capitalização.
 
-**Principais queries:**
-```sql
--- Faturamento por ano
-SELECT strftime('%Y', sale_date) AS ano,
-       ROUND(SUM(total), 2) AS faturamento_total
-FROM base_completa
-GROUP BY ano ORDER BY ano;
+Duplicatas foram identificadas e removidas. O notebook salva a base limpa como `produtos_limpo.csv`.
 
--- Top produtos
-SELECT name, SUM(qtd) AS total_qtd, ROUND(SUM(total), 2) AS total_faturado
-FROM base_completa
-GROUP BY name ORDER BY total_faturado DESC LIMIT 10;
-```
+**Colunas trabalhadas:** `code`, `name`, `price`, `actual_category`
 
 ---
 
-### `04_Analise_Clientes.ipynb` — Segmentação e Valor
-Identificação dos clientes mais valiosos e análise de comportamento.
+### `clientes_crm.ipynb`
+**EDA e tratamento da base de clientes**
 
-**O que foi feito:**
-- Top 10 clientes por faturamento acumulado
-- Frequência de compra por cliente
-- Clientes recorrentes (compraram em 2023 e 2024)
-- Distribuição de clientes por estado
-- Segmentação RFM simplificada:
-  -  Alto Valor: acima de R$ 10.000
-  -  Médio Valor: entre R$ 5.000 e R$ 10.000
-  -  Baixo Valor: abaixo de R$ 5.000
+O arquivo `clientes_crm.json` tinha dois problemas principais: e-mails com `#` no lugar de `@`, e a coluna `location` com formatos completamente inconsistentes — a mesma informação aparecia como `"PE , Recife"`, `"AC , Rio Branco"`, `"PB/Cabedelo"` e várias outras variações.
 
-**Principais queries:**
-```sql
--- Segmentação por valor
-SELECT full_name,
-       ROUND(SUM(total), 2) AS valor_total,
-       CASE
-           WHEN SUM(total) >= 10000 THEN 'Alto Valor'
-           WHEN SUM(total) >= 5000  THEN 'Médio Valor'
-           ELSE 'Baixo Valor'
-       END AS segmento
-FROM base_completa
-GROUP BY id_client, full_name
-ORDER BY valor_total DESC;
-```
+A solução para o `location` foi uma função de regex que separa cidade e estado independente do separador usado (vírgula, hífen ou barra), com um dicionário de correções manuais para os casos que não foram resolvidos automaticamente. A coluna original foi descartada após a separação.
+
+A base limpa foi salva como `clientes_limpo.csv`.
+
+**Colunas trabalhadas:** `full_name`, `email`, `code`, `location` → `cidade`, `estado`
 
 ---
 
-### `05_Previsao_Demanda.ipynb` — Machine Learning com Prophet
-Previsão de faturamento diário para os próximos 90 dias.
+### `custos_importacao.ipynb`
+**EDA e tratamento dos custos de importação**
 
-**O que foi feito:**
-- Preparação da série temporal com agregação diária
-- Preenchimento de dias sem venda com valor 0
-- Treinamento do modelo Prophet com sazonalidades anual e semanal
-- Previsão de 90 dias à frente com intervalo de confiança
-- Visualização da tendência, sazonalidade semanal e anual
+Carrega `custos_importacao.json`. A complexidade desse notebook está na coluna `historic_data`, que armazena uma lista de objetos JSON com datas e preços em dólar — um histórico de variações de custo por produto.
 
-**Principais insights:**
-- Tendência de crescimento estável ao longo do período
-- Novembro é o pico anual (Black Friday)
-- Abril/Maio representam o vale do ano
-- Sexta-feira e Sábado são os melhores dias da semana
+O tratamento teve duas etapas: primeiro extraiu o custo mais recente de cada produto para criar uma coluna `custo_atual_usd` (base resumida), depois expandiu o histórico completo em linhas separadas para análises temporais (base expandida).
 
-**Configuração do modelo:**
-```python
-modelo = Prophet(
-    yearly_seasonality=True,
-    weekly_seasonality=True,
-    daily_seasonality=False,
-    seasonality_mode="multiplicative"
-)
-```
+Resultado: dois arquivos — `custos_resumido.csv` e `custos_expandido.csv`.
+
+**Colunas trabalhadas:** `product_id`, `product_name`, `category`, `historic_data`
 
 ---
 
-### `06_Recomendacao.ipynb` — Sistema de Recomendação
-Recomendação de produtos por similaridade entre clientes.
+### `Analise_de_Vendas.ipynb`
+**Modelagem SQL e análise de faturamento**
 
-**O que foi feito:**
-- Criação da matriz cliente × produto com quantidade comprada
-- Cálculo de similaridade de cosseno entre clientes
-- Função de recomendação: identifica clientes similares e sugere produtos ainda não comprados
-- Geração de top 3 recomendações para cada cliente
-- Enriquecimento com nome, preço e categoria do produto
+Cria o banco SQLite `lh_nautical.db`, carrega as quatro bases limpas como tabelas e constrói a `base_completa` via JOIN entre vendas, produtos, clientes e custos. Essa tabela é a base de todas as análises subsequentes.
 
-**Lógica:**
-```
-Cliente A comprou Produto 1 e Produto 2
-Cliente B comprou Produto 1 e Produto 3
-→ Recomendação para A: Produto 3
-→ Recomendação para B: Produto 2
-```
+As análises de vendas cobrem faturamento por ano, faturamento mensal, top 10 produtos por receita, faturamento por categoria e faturamento por estado. Os resultados são exportados também como `base_completa.csv`.
 
-**Output:** `recomendacoes.csv` com id_client, produto recomendado, nome, preço e categoria.
+**Dependências:** `vendas_limpo.csv`, `produtos_limpo.csv`, `clientes_limpo.csv`, `custos_resumido.csv`
+
+---
+
+### `Analise_clientes.ipynb`
+**Segmentação e análise de comportamento de clientes**
+
+Parte da `base_completa` no banco para responder perguntas sobre o perfil dos clientes. Cobre quatro análises: ranking dos top 10 clientes por faturamento, segmentação RFM simplificada por faixas de valor (Alto, Médio e Baixo), frequência de compra por cliente e distribuição geográfica por estado.
+
+A segmentação usa `SUM(total) >= 55.000.000` como corte para Alto Valor — threshold definido a partir da distribuição real dos dados.
+
+**Dependências:** `lh_nautical.db` com a tabela `base_completa`
+
+---
+
+### `Prev_demand.ipynb`
+**Previsão de demanda com Prophet**
+
+Instala e usa a biblioteca Prophet (Meta) para prever o faturamento diário dos próximos 90 dias. A série temporal é preparada com agregação diária e preenchimento de dias sem venda com zero — etapa importante para não inflar a média do modelo.
+
+O modelo é configurado com sazonalidade anual e semanal no modo multiplicativo, que performa melhor em dados de varejo com variação proporcional. Os gráficos de saída mostram a previsão com intervalo de confiança e os componentes separados de tendência, sazonalidade semanal e anual.
+
+**Dependências:** `lh_nautical.db`, biblioteca `prophet`
+
+---
+
+### `sist_recomen.ipynb`
+**Sistema de recomendação por similaridade de cosseno**
+
+Monta uma matriz cliente × produto com as quantidades compradas, calcula a similaridade de cosseno entre todos os pares de clientes e usa os clientes mais similares para sugerir produtos que o cliente alvo ainda não comprou.
+
+Para cada cliente são geradas 3 recomendações. O resultado final é enriquecido com nome, preço e categoria do produto via JOIN no banco e exportado como `recomendacoes.csv`.
+
+**Dependências:** `lh_nautical.db`, biblioteca `scikit-learn`
+
+---
+
+## Arquivos gerados
+
+| Arquivo | Gerado em |
+|---|---|
+| `vendas_limpo.csv` | `vendas_2023-2024.ipynb` |
+| `produtos_limpo.csv` | `produtos.ipynb` |
+| `clientes_limpo.csv` | `clientes_crm.ipynb` |
+| `custos_resumido.csv` | `custos_importacao.ipynb` |
+| `custos_expandido.csv` | `custos_importacao.ipynb` |
+| `lh_nautical.db` | `Analise_de_Vendas.ipynb` |
+| `base_completa.csv` | `Analise_de_Vendas.ipynb` |
+| `recomendacoes.csv` | `sist_recomen.ipynb` |
 
 ---
 
@@ -227,15 +188,20 @@ pip install pandas prophet scikit-learn matplotlib pandasql
 
 ### 3. Execute os notebooks em ordem
 ```
-01_EDA.ipynb          → exploração inicial
-02_Tratamento.ipynb   → limpeza e padronização
-03_Analise_Vendas.ipynb → análise comercial
-04_Analise_Clientes.ipynb → segmentação
-05_Previsao_Demanda.ipynb → modelo Prophet
-06_Recomendacao.ipynb → sistema de recomendação
+```
+vendas_2023-2024.ipynb
+produtos.ipynb
+clientes_crm.ipynb
+custos_importacao.ipynb
+        ↓
+Analise_de_Vendas.ipynb
+Analise_clientes.ipynb
+        ↓
+Prev_demand.ipynb
+sist_recomen.ipynb
 ```
 
-> Execute sempre na ordem numérica — cada notebook depende das saídas do anterior.
+> Execute sempre nessa sequência. Os notebooks de análise dependem das bases limpas geradas nos primeiros quatro.
 
 ---
 
