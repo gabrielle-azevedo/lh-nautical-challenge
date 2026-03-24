@@ -1,0 +1,148 @@
+id_client,id_product_recomendado,name,price,actual_category
+1,49,Sonda Furuno Swift,13264.25,Eletronicos
+1,94,Motor De Popa Volvo Magnum 276Hp,40750.84,Propulsao
+1,96,Motor De Popa Tohatsu Boost Swift 126Hp,70620.84,Propulsao
+2,67,Motor De Popa Yamaha Mako 108Hp,85789.05,Propulsao
+2,73,Motor De Popa Torqeedo Core Hydra Flux 162Hp,143159.93,Propulsao
+2,120,Boia De Arqueamento Danforth Flux Tidal,3124.49,Ancoragem
+3,76,Motor Diesel Honda Aero 205Hp,148198.23,Propulsao
+3,141,Boia De Arqueamento Bruce Nexus Abyss,4781.8,Ancoragem
+3,19,Sonda Lowrance Tidal Storm Vox,16432.35,Eletronicos
+4,6,Transponder Ais Vector,11820.21,Eletronicos
+4,145,Boia De Arqueamento Delta Nexus,4349.86,Ancoragem
+4,120,Boia De Arqueamento Danforth Flux Tidal,3124.49,Ancoragem
+5,67,Motor De Popa Yamaha Mako 108Hp,85789.05,Propulsao
+5,13,Radar Simrad Boost,7747.1,Eletronicos
+5,125,Cabo De Nylon Danforth Kinetic,3402.07,Ancoragem
+6,40,Sonda Furuno Maré Tidal,14184.04,Eletronicos
+6,37,Gps Lowrance Evo Storm Drift,6067.71,Eletronicos
+6,80,Motor De Popa Volvo Maré 69Hp,129223.84,Propulsao
+7,82,Motor Elétrico Volvo Nautic Vox 118Hp,51634.04,Propulsao
+7,78,Motor Elétrico Honda Mako Axis 131Hp,121761.56,Propulsao
+7,118,Boia De Arqueamento Delta Force Vox,4315.11,Ancoragem
+8,11,Gps Furuno Swift Leviathan Poseidon,36231.91,Eletronicos
+8,110,Corrente Bruce Current,2495.51,Ancoragem
+8,131,Boia De Arqueamento Danforth Core Vortex,963.59,Ancoragem
+9,56,Motor Elétrico Torqeedo Velocity Swift 74Hp,42988.77,Propulsao
+9,101,Cabo De Nylon Delta Vortex,463.4,Ancoragem
+9,28,Piloto Automático Ais Core,14258.56,Eletronicos
+10,118,Boia De Arqueamento Delta Force Vox,4315.11,Ancoragem
+10,62,Motor Diesel Yanmar Velocity 37Hp,102221.97,Propulsao
+10,60,Motor De Popa Honda Velocity Drift 258Hp,108751.09,Propulsao
+11,116,Cabo De Nylon Delta Velocity Oceanic Abyss,2575.52,Ancoragem
+11,22,Transponder Furuno Force Ion,39452.86,Eletronicos
+11,143,Âncora Delta Hydra Kraken Velocity,4436.43,Ancoragem
+12,146,Corrente Delta Vox Ion,495.98,Ancoragem
+12,31,Transponder Furuno Pulse Axis,8283.11,Eletronicos
+12,43,Sonda Ais Barracuda,35096.86,Eletronicos
+13,2,Transponder Furuno Marlin,13998.15,Eletronicos
+13,130,Boia De Arqueamento Delta Zen Boost Vortex,4144.09,Ancoragem
+13,140,Boia De Arqueamento Bruce Dash Titan Pulse,3134.58,Ancoragem
+14,71,Motor Elétrico Torqeedo Pulse 300Hp,130174.06,Propulsao
+14,59,Motor Diesel Yanmar Hydro Magnum Boost 267Hp,87166.14,Propulsao
+14,10,Piloto Automático Simrad Titan Flux Magnum,32033.04,Eletronicos
+15,47,Rádio Simrad Tidal Aqua,6122.96,Eletronicos
+15,130,Boia De Arqueamento Delta Zen Boost Vortex,4144.09,Ancoragem
+15,69,Motor De Popa Torqeedo Ultra Impulse 292Hp,45265.02,Propulsao
+16,125,Cabo De Nylon Danforth Kinetic,3402.07,Ancoragem
+16,101,Cabo De Nylon Delta Vortex,463.4,Ancoragem
+16,54,Motor De Popa Yamaha Evo Dash 155Hp,121534.82,Propulsao
+17,121,Âncora Danforth Oceanic Helix Flux,3694.27,Ancoragem
+17,139,Boia De Arqueamento Danforth Torque,1424.88,Ancoragem
+17,116,Cabo De Nylon Delta Velocity Oceanic Abyss,2575.52,Ancoragem
+18,116,Cabo De Nylon Delta Velocity Oceanic Abyss,2575.52,Ancoragem
+18,26,Piloto Automático Furuno Core Boost Flux,17283.18,Eletronicos
+18,110,Corrente Bruce Current,2495.51,Ancoragem
+19,46,Sonda Ais Magnum Boost,4983.77,Eletronicos
+19,74,Motor De Popa Honda Torque 228Hp,86558.56,Propulsao
+19,143,Âncora Delta Hydra Kraken Velocity,4436.43,Ancoragem
+20,101,Cabo De Nylon Delta Vortex,463.4,Ancoragem
+20,43,Sonda Ais Barracuda,35096.86,Eletronicos
+20,115,Cabo De Nylon Delta Force Magnum Leviathan,830.59,Ancoragem
+21,107,Boia De Arqueamento Bruce Tidal Marlin,1513.38,Ancoragem
+21,6,Transponder Ais Vector,11820.21,Eletronicos
+21,73,Motor De Popa Torqeedo Core Hydra Flux 162Hp,143159.93,Propulsao
+22,72,Motor De Popa Volvo Hydro Dash 256Hp,99664.64,Propulsao
+22,140,Boia De Arqueamento Bruce Dash Titan Pulse,3134.58,Ancoragem
+22,91,Motor Elétrico Tohatsu Zenith Oceanic 113Hp,134886.02,Propulsao
+23,94,Motor De Popa Volvo Magnum 276Hp,40750.84,Propulsao
+23,100,Motor Elétrico Honda Vector Abyss 220Hp,104600.24,Propulsao
+23,85,Motor De Popa Parsun Impulse 162Hp,38578.7,Propulsao
+24,71,Motor Elétrico Torqeedo Pulse 300Hp,130174.06,Propulsao
+24,67,Motor De Popa Yamaha Mako 108Hp,85789.05,Propulsao
+24,27,Gps Garmin Vortex Maré Drift,16511.45,Eletronicos
+25,108,Boia De Arqueamento Bruce Titan,3345.56,Ancoragem
+25,96,Motor De Popa Tohatsu Boost Swift 126Hp,70620.84,Propulsao
+25,109,Cabo De Nylon Danforth Evo Aqua Mako,622.7,Ancoragem
+26,67,Motor De Popa Yamaha Mako 108Hp,85789.05,Propulsao
+26,125,Cabo De Nylon Danforth Kinetic,3402.07,Ancoragem
+26,43,Sonda Ais Barracuda,35096.86,Eletronicos
+27,67,Motor De Popa Yamaha Mako 108Hp,85789.05,Propulsao
+27,139,Boia De Arqueamento Danforth Torque,1424.88,Ancoragem
+27,131,Boia De Arqueamento Danforth Core Vortex,963.59,Ancoragem
+28,67,Motor De Popa Yamaha Mako 108Hp,85789.05,Propulsao
+28,128,Boia De Arqueamento Bruce Marlin Hydra,4650.72,Ancoragem
+28,2,Transponder Furuno Marlin,13998.15,Eletronicos
+29,22,Transponder Furuno Force Ion,39452.86,Eletronicos
+29,138,Boia De Arqueamento Delta Peak Boost Thrust,4183.05,Ancoragem
+29,21,Gps Ais Nautic Thrust,8734.56,Eletronicos
+30,125,Cabo De Nylon Danforth Kinetic,3402.07,Ancoragem
+30,103,Âncora Delta Swift,1789.19,Ancoragem
+30,97,Motor De Popa Tohatsu Evo 168Hp,135335.07,Propulsao
+31,116,Cabo De Nylon Delta Velocity Oceanic Abyss,2575.52,Ancoragem
+31,70,Motor Diesel Parsun Boost Helix Velocity 146Hp,34355.43,Propulsao
+31,22,Transponder Furuno Force Ion,39452.86,Eletronicos
+32,26,Piloto Automático Furuno Core Boost Flux,17283.18,Eletronicos
+32,9,Transponder Ais Titan Pulse,39705.5,Eletronicos
+32,91,Motor Elétrico Tohatsu Zenith Oceanic 113Hp,134886.02,Propulsao
+33,133,Âncora Bruce Core Pulse,1892.72,Ancoragem
+33,60,Motor De Popa Honda Velocity Drift 258Hp,108751.09,Propulsao
+33,122,Corrente Danforth Zenith Oceanic Torque,1322.47,Ancoragem
+34,2,Transponder Furuno Marlin,13998.15,Eletronicos
+34,47,Rádio Simrad Tidal Aqua,6122.96,Eletronicos
+34,110,Corrente Bruce Current,2495.51,Ancoragem
+35,26,Piloto Automático Furuno Core Boost Flux,17283.18,Eletronicos
+35,9,Transponder Ais Titan Pulse,39705.5,Eletronicos
+35,130,Boia De Arqueamento Delta Zen Boost Vortex,4144.09,Ancoragem
+36,9,Transponder Ais Titan Pulse,39705.5,Eletronicos
+36,54,Motor De Popa Yamaha Evo Dash 155Hp,121534.82,Propulsao
+36,145,Boia De Arqueamento Delta Nexus,4349.86,Ancoragem
+37,60,Motor De Popa Honda Velocity Drift 258Hp,108751.09,Propulsao
+37,4,Rádio Ais Hydro Tidal Zen,3381.88,Eletronicos
+37,30,Transponder Ais Boost,32247.87,Eletronicos
+38,113,Âncora Delta Mako Ultra,4394.96,Ancoragem
+38,95,Motor Diesel Honda Leviathan 133Hp,69808.04,Propulsao
+38,97,Motor De Popa Tohatsu Evo 168Hp,135335.07,Propulsao
+39,78,Motor Elétrico Honda Mako Axis 131Hp,121761.56,Propulsao
+39,100,Motor Elétrico Honda Vector Abyss 220Hp,104600.24,Propulsao
+39,124,Corrente Delta Axis,3769.93,Ancoragem
+40,49,Sonda Furuno Swift,13264.25,Eletronicos
+40,47,Rádio Simrad Tidal Aqua,6122.96,Eletronicos
+40,20,Radar Ais Marlin,30833.44,Eletronicos
+41,108,Boia De Arqueamento Bruce Titan,3345.56,Ancoragem
+41,134,Âncora Delta Storm Vox,4717.61,Ancoragem
+41,72,Motor De Popa Volvo Hydro Dash 256Hp,99664.64,Propulsao
+42,72,Motor De Popa Volvo Hydro Dash 256Hp,99664.64,Propulsao
+42,38,Rádio Ais Force,26461.14,Eletronicos
+42,92,Motor Elétrico Yamaha Nautic Kraken 133Hp,88854.1,Propulsao
+43,127,Cabo De Nylon Delta Velocity Core Mako,1549.35,Ancoragem
+43,124,Corrente Delta Axis,3769.93,Ancoragem
+43,79,Motor Diesel Tohatsu Zenith 60Hp,66146.85,Propulsao
+44,28,Piloto Automático Ais Core,14258.56,Eletronicos
+44,84,Motor De Popa Torqeedo Zenith Peak Thrust 212Hp,43423.88,Propulsao
+44,136,Cabo De Nylon Bruce Flux Hydro,1973.5,Ancoragem
+45,140,Boia De Arqueamento Bruce Dash Titan Pulse,3134.58,Ancoragem
+45,32,Sonda Ais Impulse Oceanic Zenith,12502.46,Eletronicos
+45,130,Boia De Arqueamento Delta Zen Boost Vortex,4144.09,Ancoragem
+46,133,Âncora Bruce Core Pulse,1892.72,Ancoragem
+46,41,Gps Simrad Flow Pulse,10600.0,Eletronicos
+46,49,Sonda Furuno Swift,13264.25,Eletronicos
+47,61,Motor Diesel Honda Prime 84Hp,28018.63,Propulsao
+47,60,Motor De Popa Honda Velocity Drift 258Hp,108751.09,Propulsao
+47,72,Motor De Popa Volvo Hydro Dash 256Hp,99664.64,Propulsao
+48,112,Corrente Danforth Tidal,2180.95,Ancoragem
+48,29,Rádio Simrad Orca,36510.34,Eletronicos
+48,51,Motor Diesel Tohatsu Evo Zenith 16Hp,64158.99,Propulsao
+49,90,Motor De Popa Yamaha Thrust Marlin Nexus 182Hp,79097.33,Propulsao
+49,124,Corrente Delta Axis,3769.93,Ancoragem
+49,127,Cabo De Nylon Delta Velocity Core Mako,1549.35,Ancoragem
